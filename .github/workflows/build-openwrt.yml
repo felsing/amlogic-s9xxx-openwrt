@@ -47,7 +47,6 @@ on:
           - h69k
           - h88k
           - h88k-v3
-          - hs530r
           - hugsun-x99
           - ipc-r
           - king3399
@@ -126,7 +125,6 @@ on:
           - s912-m8s-pro
           - s912-nexbox-a1
           - s912-nexbox-a2
-          - s912-onecloudpro
           - s912-phicomm-t1
           - s912-t95z-plus
           - s912-tx8-max
@@ -157,7 +155,7 @@ on:
       openwrt_kernel:
         description: "Select kernel version"
         required: false
-        default: "6.1.y_6.6.y"
+        default: "6.1.y_5.15.y"
         type: choice
         options:
           - 5.4.y
@@ -166,7 +164,8 @@ on:
           - 6.1.y
           - 6.6.y
           - 6.1.y_6.6.y
-          - 5.15.y_5.10.y
+          - 6.1.y_5.15.y
+          - 5.4.y_5.10.y
       auto_kernel:
         description: "Auto use the latest kernel"
         required: false
@@ -238,6 +237,7 @@ jobs:
           sudo -E apt-get -y install $(curl -fsSL https://is.gd/depend_ubuntu2204_openwrt)
           sudo -E systemctl daemon-reload
           #sudo -E apt-get -y full-upgrade
+          sudo apt-get install -y clang
           sudo -E apt-get -y autoremove --purge
           sudo -E apt-get clean
           sudo sed -i '/NVM_DIR/d;/skel/d' /root/{.bashrc,.profile}
