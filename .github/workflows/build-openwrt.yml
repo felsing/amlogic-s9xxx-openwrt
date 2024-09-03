@@ -356,7 +356,7 @@ jobs:
           cd openwrt/
           [[ -d "output" ]] || mkdir output
           cp -f bin/targets/*/*/*rootfs.tar.gz output/
-          cp -f bin/targets/*/*/*.vmdk output/
+          cp -f bin/targets/*/*/*vmdk output/
           cp -f .config output/config
           rm -rf $(ls . | grep -v "^output$" | xargs) 2>/dev/null
 
